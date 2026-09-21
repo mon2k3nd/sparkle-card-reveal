@@ -168,7 +168,7 @@ function WeddingInvitation() {
       <img src={img1} alt="Thảo My và Xuân Tú trong ngày cưới" className="hero-photo absolute inset-0 h-full w-full object-cover object-[50%_30%]" />
       <div className="hero-vignette absolute inset-0" />
       <div className="relative mx-auto flex min-h-[100svh] max-w-5xl flex-col items-center justify-end px-5 pb-12 text-center text-primary-foreground">
-        <p className="mb-4 text-[10px] uppercase tracking-[.3em] text-secondary">03 · 10 · 2026</p>
+        <p className="mb-4 text-[10px] uppercase tracking-[.3em] text-primary-foreground/85">03 · 10 · 2026</p>
         <h1 className="text-[3.6rem] leading-[.9] sm:text-8xl">Thảo My<br/><span className="text-secondary">&</span> Xuân Tú</h1>
         <p className="mt-6 font-display text-lg italic leading-[2]">Hai con người,<br/>hai hành trình,<br/>một đích đến.</p>
         <span aria-hidden className="scroll-hint mt-8 block h-12 w-px text-primary-foreground/70"><i /></span>

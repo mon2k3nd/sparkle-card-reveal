@@ -245,7 +245,7 @@
 }
 
 @utility hero-vignette {
-  background: linear-gradient(to bottom, color-mix(in oklab, var(--ink) 18%, transparent) 0%, transparent 42%, color-mix(in oklab, var(--ink) 84%, transparent) 100%);
+  background: linear-gradient(to bottom, color-mix(in oklab, var(--ink) 18%, transparent) 0%, transparent 34%, color-mix(in oklab, var(--ink) 52%, transparent) 68%, color-mix(in oklab, var(--ink) 88%, transparent) 100%);
 }
 
 @utility gallery-stage {
