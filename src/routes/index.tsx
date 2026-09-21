@@ -4,16 +4,16 @@ import { CalendarPlus, ChevronLeft, ChevronRight, ChevronUp, Heart, MapPin, Maxi
 import QRCode from "qrcode";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
-import a1 from "@/assets/TVT00967.JPG.asset.json";
-import a2 from "@/assets/TVT00864.JPG.asset.json";
-import a3 from "@/assets/TVT01258.JPG.asset.json";
-import a4 from "@/assets/TVT01234.JPG.asset.json";
-import a5 from "@/assets/TVT01222.JPG.asset.json";
-import a6 from "@/assets/TVT01187.JPG.asset.json";
-import a7 from "@/assets/TVT01136.JPG.asset.json";
-import a8 from "@/assets/TVT01066.JPG.asset.json";
-import a9 from "@/assets/TVT01057.JPG.asset.json";
-import musicAsset from "@/assets/leDuong.mp3.asset.json";
+import a1 from "@/assets/TVT00967.JPG";
+import a2 from "@/assets/TVT00864.JPG";
+import a3 from "@/assets/TVT01258.JPG";
+import a4 from "@/assets/TVT01234.JPG";
+import a5 from "@/assets/TVT01222.JPG";
+import a6 from "@/assets/TVT01187.JPG";
+import a7 from "@/assets/TVT01136.JPG";
+import a8 from "@/assets/TVT01066.JPG";
+import a9 from "@/assets/TVT01057.JPG";
+import musicUrl from "@/assets/leDuong.mp3";
 
 export const Route = createFileRoute("/")({
   head: () => ({ meta: [
