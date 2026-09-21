@@ -27,9 +27,9 @@ export const Route = createFileRoute("/")({
   component: WeddingInvitation,
 });
 
-const [img1, img2, img3, img4, img5, img6, img7, img8, img9] = [a1, a2, a3, a4, a5, a6, a7, a8, a9];
-const photos = [img1, img2, img3, img4, img5, img6, img7, img8, img9];
-const gallery = photos;
+const [img1, , img3, img4, img5, img6, img7, img8, img9] = [a1, a2, a3, a4, a5, a6, a7, a8, a9];
+const gallery = [img1, img3, img4, img5, img6, img7, img8, img9];
+const storyPhoto = [img4, img5, img6, img7];
 const weddingDate = new Date("2026-10-03T10:00:00+07:00").getTime();
 
 function IconButton({ label, onClick, children, className = "" }: { label: string; onClick: () => void; children: React.ReactNode; className?: string }) {
@@ -82,6 +82,18 @@ function WeddingInvitation() {
     };
   }, [closeLightbox, lightboxIndex, showNext, showPrevious]);
 
+  useEffect(() => {
+    if (!opened) return;
+    const items = Array.from(document.querySelectorAll<HTMLElement>(".reveal"));
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) { entry.target.classList.add("is-in"); observer.unobserve(entry.target); }
+      });
+    }, { threshold: 0.12, rootMargin: "0px 0px -8% 0px" });
+    items.forEach((item, index) => { item.style.transitionDelay = `${Math.min(index % 4, 3) * 90}ms`; observer.observe(item); });
+    return () => observer.disconnect();
+  }, [opened]);
+
   const calendarUrl = useMemo(() => {
     const details = encodeURIComponent("Lễ thành hôn Thảo My & Xuân Tú tại tư gia nhà trai, Chợ Gồ, Thôn Thanh Cù, Xã Hiệp Cường, Tỉnh Hưng Yên.");
     return `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent("Lễ thành hôn Thảo My & Xuân Tú")}&dates=20261003T030000Z/20261003T050000Z&details=${details}`;
@@ -91,7 +103,7 @@ function WeddingInvitation() {
     if (opening) return;
     setOpening(true);
     try { await audioRef.current?.play(); setPlaying(true); } catch { setPlaying(false); }
-    window.setTimeout(() => setOpened(true), 4300);
+    window.setTimeout(() => setOpened(true), 3300);
   }
   async function toggleMusic() {
     if (!audioRef.current) return;
