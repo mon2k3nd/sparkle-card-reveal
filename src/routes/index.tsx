@@ -4,15 +4,15 @@ import { CalendarPlus, ChevronLeft, ChevronRight, ChevronUp, Heart, MapPin, Maxi
 import QRCode from "qrcode";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
-import a1 from "@/assets/TVT00967.JPG";
-import a2 from "@/assets/TVT00864.JPG";
-import a3 from "@/assets/TVT01258.JPG";
-import a4 from "@/assets/TVT01234.JPG";
-import a5 from "@/assets/TVT01222.JPG";
-import a6 from "@/assets/TVT01187.JPG";
-import a7 from "@/assets/TVT01136.JPG";
-import a8 from "@/assets/TVT01066.JPG";
-import a9 from "@/assets/TVT01057.JPG";
+import a1 from "@/assets/TVT00967.jpg";
+import a2 from "@/assets/TVT00864.jpg";
+import a3 from "@/assets/TVT01258.jpg";
+import a4 from "@/assets/TVT01234.jpg";
+import a5 from "@/assets/TVT01222.jpg";
+import a6 from "@/assets/TVT01187.jpg";
+import a7 from "@/assets/TVT01136.jpg";
+import a8 from "@/assets/TVT01066.jpg";
+import a9 from "@/assets/TVT01057.jpg";
 import musicUrl from "@/assets/leDuong.mp3";
 
 export const Route = createFileRoute("/")({
@@ -116,7 +116,7 @@ function WeddingInvitation() {
   }
 
   return <main className="paper-texture min-h-screen text-foreground">
-    <audio ref={audioRef} src={musicAsset.url} loop preload="metadata" />
+    <audio ref={audioRef} src={musicUrl} loop preload="metadata" />
     {!opened && <div className={`invitation-cover fixed inset-0 z-50 grid place-items-center overflow-hidden px-6 ${opening ? "is-opening" : ""}`}>
       <img aria-hidden src={img1} className="cover-photo absolute inset-0 h-full w-full object-cover object-[50%_32%]" alt="" />
       <div aria-hidden className="cover-photo-shade absolute inset-0" />
