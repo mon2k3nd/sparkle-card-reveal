@@ -27,7 +27,7 @@ export const Route = createFileRoute("/")({
   component: WeddingInvitation,
 });
 
-const [img1, img2, img3, img4, img5, img6, img7, img8, img9] = [a1.url, a2.url, a3.url, a4.url, a5.url, a6.url, a7.url, a8.url, a9.url];
+const [img1, img2, img3, img4, img5, img6, img7, img8, img9] = [a1, a2, a3, a4, a5, a6, a7, a8, a9];
 const photos = [img1, img2, img3, img4, img5, img6, img7, img8, img9];
 const gallery = photos;
 const weddingDate = new Date("2026-10-03T10:00:00+07:00").getTime();
