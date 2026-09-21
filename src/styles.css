@@ -179,31 +179,46 @@
 }
 
 @keyframes coverFade {
-  0%, 88% { opacity: 1; }
+  0%, 84% { opacity: 1; }
   100% { opacity: 0; visibility: hidden; }
 }
 
-@keyframes cardLift {
-  0%, 12% { transform: translateY(0) rotate(-1deg) scale(.92); }
-  58% { transform: translateY(-58%) rotate(1.5deg) scale(.97); }
-  78% { transform: translateY(-108%) rotate(0deg) scale(1.02); }
-  100% { transform: translateY(-92%) rotate(0deg) scale(1.08); }
+@keyframes cardRise {
+  0% { transform: translateY(16%) rotate(-1deg) scale(.94); filter: blur(0); opacity: 1; }
+  38% { transform: translateY(-58%) rotate(.6deg) scale(1.02); }
+  68% { transform: translateY(-46%) rotate(0deg) scale(1.12); opacity: 1; filter: blur(0); }
+  100% { transform: translateY(-42%) rotate(0deg) scale(2.6); opacity: 0; filter: blur(14px); }
+}
+
+@keyframes envelopeSink {
+  0%, 50% { transform: translateY(0) rotate(0deg); opacity: 1; }
+  62% { transform: translateY(-3%) rotate(-1deg); opacity: 1; }
+  100% { transform: translateY(125vh) rotate(5deg); opacity: 0; }
+}
+
+@keyframes flapOpen {
+  0% { transform: rotateX(0deg); opacity: 1; }
+  40%, 50% { transform: rotateX(178deg); opacity: 1; }
+  100% { transform: rotateX(178deg) translateY(-125vh); opacity: 0; }
 }
 
 @keyframes sealRelease {
   0% { transform: translate(-50%, -50%) scale(1); }
-  35% { transform: translate(-50%, -50%) scale(.88) rotate(-5deg); }
-  70% { transform: translate(-50%, -50%) scale(1.08) rotate(4deg); }
-  100% { opacity: 0; transform: translate(-50%, -50%) scale(.7) rotate(12deg); }
+  35% { transform: translate(-50%, -50%) scale(.86) rotate(-6deg); }
+  70% { transform: translate(-50%, -50%) scale(1.1) rotate(5deg); }
+  100% { opacity: 0; transform: translate(-50%, 140%) scale(.6) rotate(24deg); }
 }
 
-@keyframes envelopeAwaken { 0%,100% { transform: rotate(0deg) translateY(0); } 35% { transform: rotate(-1.2deg) translateY(-3px); } 70% { transform: rotate(1deg) translateY(-1px); } }
-@keyframes photoReveal { 0%,58% { opacity: 0; transform: scale(1.08); } 100% { opacity: 1; transform: scale(1); } }
-@keyframes shadeReveal { 0%,60% { opacity: 0; } 100% { opacity: 1; } }
-@keyframes whisperAway { 0%,32% { opacity: 1; transform: translateY(0); } 50%,100% { opacity: 0; transform: translateY(-16px); } }
-@keyframes glint { 0%,38% { transform: translateX(0) skewX(-15deg); opacity: 0; } 48% { opacity: .8; } 62%,100% { transform: translateX(520%) skewX(-15deg); opacity: 0; } }
+@keyframes envelopeAwaken { 0%,100% { transform: rotate(0deg) translateY(0); } 35% { transform: rotate(-1.2deg) translateY(-4px); } 70% { transform: rotate(1deg) translateY(-1px); } }
+@keyframes photoReveal { 0%,42% { opacity: 0; transform: scale(1.12); filter: blur(10px); } 100% { opacity: 1; transform: scale(1); filter: blur(0); } }
+@keyframes shadeReveal { 0%,48% { opacity: 0; } 100% { opacity: 1; } }
+@keyframes whisperAway { 0%,20% { opacity: 1; transform: translateY(0); } 44%,100% { opacity: 0; transform: translateY(-18px); filter: blur(6px); } }
+@keyframes glint { 0%,30% { transform: translateX(0) skewX(-15deg); opacity: 0; } 42% { opacity: .85; } 58%,100% { transform: translateX(520%) skewX(-15deg); opacity: 0; } }
 @keyframes coverPetal { 0% { opacity: 0; transform: translate3d(0,-12vh,0) rotate(0); } 22% { opacity: .8; } 100% { opacity: 0; transform: translate3d(30px,110vh,0) rotate(340deg); } }
 @keyframes dotPulse { 0%,100% { opacity: .25; transform: scale(.7); } 50% { opacity: 1; transform: scale(1); } }
+@keyframes auraBloom { 0% { opacity: 0; transform: scale(.4); } 45% { opacity: .85; } 100% { opacity: 0; transform: scale(2.6); } }
+@keyframes scrollHint { 0% { transform: scaleY(0); transform-origin: top; opacity: 0; } 40% { opacity: 1; } 60% { transform: scaleY(1); transform-origin: top; } 100% { transform: scaleY(0); transform-origin: bottom; opacity: 0; } }
+
 
 @utility font-display { font-family: var(--font-display); }
 @utility paper-texture {
@@ -230,7 +245,7 @@
 }
 
 @utility hero-vignette {
-  background: linear-gradient(to bottom, color-mix(in oklab, var(--ink) 18%, transparent) 0%, transparent 42%, color-mix(in oklab, var(--ink) 84%, transparent) 100%);
+  background: linear-gradient(to bottom, color-mix(in oklab, var(--ink) 18%, transparent) 0%, transparent 34%, color-mix(in oklab, var(--ink) 52%, transparent) 68%, color-mix(in oklab, var(--ink) 88%, transparent) 100%);
 }
 
 @utility gallery-stage {
@@ -249,16 +264,18 @@
 @utility invitation-cover {
   perspective: 1200px;
   background: radial-gradient(circle at 50% 38%, color-mix(in oklab, var(--secondary) 20%, var(--paper)), var(--paper) 62%);
-  &.is-opening { animation: coverFade 4.3s ease both; }
-  &.is-opening .envelope-scene { animation: envelopeAwaken .75s ease .15s both; }
-  &.is-opening .envelope-flap { transform: rotateX(180deg); z-index: 5; transition-delay: .9s; }
-  &.is-opening .invitation-card { animation: cardLift 2.45s 1.35s cubic-bezier(.18,.78,.2,1) both; }
-  &.is-opening .wax-seal { animation: sealRelease .75s .25s cubic-bezier(.2,.8,.2,1) both; }
+  &.is-opening { animation: coverFade 3.4s cubic-bezier(.4,0,.2,1) both; }
+  &.is-opening .envelope-scene { animation: envelopeAwaken .7s ease both; }
+  &.is-opening .envelope-shell { animation: envelopeSink 2.6s cubic-bezier(.5,0,.75,0) both; }
+  &.is-opening .envelope-flap { animation: flapOpen 2.6s cubic-bezier(.22,.7,.2,1) both; z-index: 5; }
+  &.is-opening .invitation-card { animation: cardRise 2.3s .85s cubic-bezier(.16,.84,.24,1) both; z-index: 40; }
+  &.is-opening .wax-seal { animation: sealRelease .8s .1s cubic-bezier(.2,.8,.2,1) both; }
+  &.is-opening .cover-aura { animation: auraBloom 2.2s .8s ease-out both; }
   &.is-opening .open-label { opacity: 0; }
-  &.is-opening .cover-photo { animation: photoReveal 4.3s ease both; }
-  &.is-opening .cover-photo-shade { animation: shadeReveal 4.3s ease both; }
-  &.is-opening .cover-whisper { animation: whisperAway 2s ease both; }
-  &.is-opening .card-glint { animation: glint 3.8s ease both; }
+  &.is-opening .cover-photo { animation: photoReveal 3.4s cubic-bezier(.2,.75,.2,1) both; }
+  &.is-opening .cover-photo-shade { animation: shadeReveal 3.4s ease both; }
+  &.is-opening .cover-whisper { animation: whisperAway 1.6s ease both; }
+  &.is-opening .card-glint { animation: glint 2.8s ease both; }
 }
 
 @utility envelope-scene {
@@ -272,7 +289,18 @@
   transition: transform 1.15s cubic-bezier(.2,.72,.15,1), z-index 0s 1.45s;
 }
 
-@utility invitation-card { transform: translateY(0) rotate(-1deg) scale(.92); }
+@utility invitation-card { transform: translateY(16%) rotate(-1deg) scale(.94); }
+@utility cover-aura { opacity: 0; background: radial-gradient(circle, color-mix(in oklab, var(--secondary) 65%, transparent), transparent 62%); }
+@utility scroll-hint { & i { display: block; width: 1px; height: 100%; background: currentColor; animation: scrollHint 2.4s cubic-bezier(.65,0,.35,1) infinite; } }
+@utility reveal {
+  opacity: 0;
+  transform: translateY(34px) scale(.985);
+  filter: blur(8px);
+  transition: opacity 1s cubic-bezier(.2,.75,.2,1), transform 1s cubic-bezier(.2,.75,.2,1), filter 1s cubic-bezier(.2,.75,.2,1);
+  &.is-in { opacity: 1; transform: none; filter: none; }
+}
+@utility reveal-slow { transition-duration: 1.35s; }
+@utility story-photo { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); }
 @utility wax-seal { transition: opacity .25s ease, transform .25s ease; }
 @utility open-label {
   transition: opacity .3s ease;
